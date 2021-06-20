@@ -1,0 +1,115 @@
+<div class="content">
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-12 col-lg-6 login-right">
+                            <div class="login-header text-center">
+                                <h3>Signup <span>User Form</span></h3>
+                            </div>
+
+                            <form autocomplete="off" #signupForm="ngForm" class="form-signin" (ngSubmit)="onSubmitForm(signupForm)">
+                               
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input autocomplete="off" type="test" name="firstName" id="firstName" required
+                                         #firstNameValidation="ngModel"
+                                        [ngClass]="{ 'is-invalid': (firstNameValidation.errors) && formSubmit }"
+                                        [(ngModel)]="signupDto.firstName" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <div class="text-danger"
+                                            *ngIf="formSubmit && firstNameValidation.errors && firstNameValidation.errors.required">
+                                            First Name is required
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input autocomplete="off" type="test" name="lastName" id="lastName" required
+                                         #lastNameValidation="ngModel"
+                                        [ngClass]="{ 'is-invalid': (lastNameValidation.errors) && formSubmit }"
+                                        [(ngModel)]="signupDto.lastName" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <div class="text-danger"
+                                            *ngIf="formSubmit && lastNameValidation.errors && lastNameValidation.errors.required">
+                                            Last Name is required
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input autocomplete="off" type="email" name="email" id="email" required
+                                         #emailValidation="ngModel"
+                                        [ngClass]="{ 'is-invalid': (emailValidation.errors) && formSubmit }"
+                                        [(ngModel)]="signupDto.email" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <div class="text-danger"
+                                            *ngIf="formSubmit && emailValidation.errors && emailValidation.errors.required">
+                                            Email is required
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input autocomplete="off" type="password" name="password" id="password" required minlength="6"
+                                        #passwordValidation="ngModel"
+                                        [ngClass]="{ 'is-invalid': (passwordValidation.errors) && formSubmit }"
+                                        [(ngModel)]="signupDto.password" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <div class="text-danger"
+                                            *ngIf="formSubmit && passwordValidation.errors && passwordValidation.errors.required">
+                                            Password is required
+                                        </div>
+                                        <div class="text-danger"
+                                            *ngIf="formSubmit && passwordValidation.errors && passwordValidation.errors.minlength">
+                                            Password should be atleast 6 characters minimum
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">Confirm Password</label>
+                                    <input autocomplete="off" type="confirmPassword" name="confirmPassword" id="confirmPassword" required minlength="6"
+                                        #confirmPasswordValidation="ngModel"
+                                        [ngClass]="{ 'is-invalid': (confirmPasswordValidation.errors) && formSubmit }"
+                                        [(ngModel)]="signupDto.confirmPassword" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <div class="text-danger"
+                                            *ngIf="formSubmit && confirmPasswordValidation.errors && confirmPasswordValidation.errors.required">
+                                           Confirm Password is required
+                                        </div>
+                                        <div class="text-danger"
+                                            *ngIf="formSubmit && confirmPasswordValidation.errors && confirmPasswordValidation.errors.minlength">
+                                            Confirm Password should be atleast 6 characters minimum
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary btn">Submit</button> &nbsp;
+                                    <button type="reset" class="btn btn-secondary btn">Cancel</button>
+                                </div>
+                                <div class="text-center register-link">
+                                     <a class="alert alert-primary-light" href="/login">
+                                         <strong><u>Alreday have account</u></strong></a>
+                                </div>
+                            </form>
+                    </div>
+                    </div>
+                </div>                    
+            </div>
+        </div>
+
+    </div>
+
+</div>		
+
+
+
+

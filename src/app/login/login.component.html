@@ -1,0 +1,135 @@
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="">
+                    <div class="row align-items-center justify-content-center">
+                      
+                        <!--Login Form-->
+                        <div class="col-md-12 col-lg-6 login-right" *ngIf="loginFormEnabled">
+                            <div class="login-header text-center">
+                                <h3>Login <span>Form</span></h3>
+                            </div>
+                            <form autocomplete="off" #loginForm="ngForm" class="form-signin"
+                                (ngSubmit)="onSubmitForm(loginForm)">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input autocomplete="off" type="email" name="email" id="email" required
+                                        #emailValidation="ngModel"
+                                        [ngClass]="{ 'is-invalid': (emailValidation.errors) && loginFormSubmit }"
+                                        [(ngModel)]="loginDto.email" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <div class="text-danger"
+                                            *ngIf="loginFormSubmit && emailValidation.errors && emailValidation.errors.required">
+                                            Email is required
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input autocomplete="off" type="password" name="password" id="password" required
+                                        minlength="6" #passwordValidation="ngModel"
+                                        [ngClass]="{ 'is-invalid': (passwordValidation.errors) && loginFormSubmit }"
+                                        [(ngModel)]="loginDto.password" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <div class="text-danger"
+                                            *ngIf="loginFormSubmit && passwordValidation.errors && passwordValidation.errors.required">
+                                            Password is required
+                                        </div>
+                                        <div class="text-danger"
+                                            *ngIf="loginFormSubmit && passwordValidation.errors && passwordValidation.errors.minlength">
+                                            Password should be atleast 6 characters minimum
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary btn">Submit</button> &nbsp;
+                                    <button type="reset" class="btn btn-secondary btn">Cancel</button>
+                                </div>
+                                <div class="text-center register-link">
+                                    <a class="alert alert-primary-light" href="/signup">
+                                        <strong><u>Dont have account</u></strong></a>
+                                </div>
+                            </form>
+                        </div>
+
+
+
+                        <!--OTP Form-->
+                        <div class="col-md-12 col-lg-6 login-right" *ngIf="otpFormEnabled">
+                            <div class="login-header text-center">
+                                <h3>OTP <span>Form</span></h3>
+                            </div>
+                            <form autocomplete="off" #otpValidateForm="ngForm" class="form-signin"
+                                (ngSubmit)="onSubmitOTPForm(otpValidateForm)">
+
+                                <div class="form-group">
+                                    <label for="number">Enter OTP</label>
+                                    <input autocomplete="off" type="otp" name="otp" id="otp" required
+                                        #otpValidation="ngModel"
+                                        [ngClass]="{ 'is-invalid': (otpValidation.errors) && otpFormSubmit }"
+                                        [(ngModel)]="loginDto.otp" class="form-control">
+                                    <div class="invalid-feedback">
+                                        <div class="text-danger"
+                                            *ngIf="otpFormSubmit && otpValidation.errors && otpValidation.errors.required">
+                                            otp is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary btn">Submit</button> &nbsp;
+                                    <button type="reset" class="btn btn-secondary btn">Cancel</button>
+                                </div>
+                                <div class="text-center register-link">
+                                    <a class="alert alert-primary-light" href="/login"><strong><u>Didn't receive otp</u></strong></a>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="modal fade" id="warningSessionModal">
+    <div class="modal-dialog">
+        <div class="modal-content mt-30">
+            <div class="modal-header">
+                <h4 class="modal-title">Warning!!</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                           
+                            <div class="form-group">
+                                <label for="file" style="margin: 0px 20px;">Already having active sessions proceed to close all sessions ?</label>
+                            </div>
+                            <div class="form-group text-right">
+                                <button class="btn btn-primary add-btn mr-3 btn-35" type="submit"
+                                     (click)="closeAllSessions()">
+                                    Ok
+                                </button>
+                                <button type="button" class="btn btn-secondary btn-35" data-dismiss="modal"
+                                   >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

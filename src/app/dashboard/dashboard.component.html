@@ -1,0 +1,10 @@
+<div *ngIf="enableDashboard">
+    <div class="container-fluid">
+        <div class="login-header text-center">
+            <h3>Hi {{loggedInUser?.fullName}} Login Successfully</h3>
+        </div>
+        <div class="form-group text-center">
+            <button type="button" class="btn btn-primary btn" (click)="logOut()">Logout</button> &nbsp;
+        </div>
+    </div>
+</div>
